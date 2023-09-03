@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- 외부 CSS 파일 연결 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="circle">
+            <img src="/static/remo.png" alt="Your Image" width="250" height="250">
+        </div> <!-- 원 안에 이미지 추가 -->
+        <h1 class="header">보이스피싱일 가능성이 높습니다!</h1>
+        <style>
+    .container {
+        display: flex; /* Flexbox 레이아웃을 사용하여 세로 가운데 정렬을 설정합니다. */
+        flex-direction: column; /* 아이템을 세로로 정렬합니다. */
+        justify-content: center; /* 수직 가운데 정렬을 설정합니다. */
+        align-items: center; /* 수평 가운데 정렬을 설정합니다. */
+        height: 100vh; /* 뷰포트 높이에 맞게 컨테이너의 높이를 설정합니다. */
+    }
+
+    .header {
+        font-size: 24px; /* 원하는 크기로 조정하세요 */
+        text-align: center; /* 가로 가운데 정렬 */
+    }
+            
+    .circle {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: #FF0000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .circle img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>
+        <button id="confirmStart" class="report-button">신고를 원하시는 경우 이 버튼을 클릭해주세요</button>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#confirmStart").click(function() {
+                Swal.fire({
+                    title: '해당 통화를 신고하시겠습니까?',
+                    text: '해당 통화는 보이스피싱일 가능성이 높습니다.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '확인',
+                    cancelButtonText: '취소'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire(
+                            '신고가 접수되었습니다.',
+                            '보이스피싱에 유의하시길 바랍니다.',
+                            'success'
+                        )
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
